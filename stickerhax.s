@@ -8,8 +8,6 @@ _start:
 
 #define ROPKIT_LINEARMEM_BUF (ROPKIT_LINEARMEM_REGIONBASE+0x2000000)
 
-#define ROPKIT_APPMEMEND_TEXT_OFFSET 0x300000
-
 //Only works with the game's exheader patched for enabling SD access.
 #define ROPKIT_BINPAYLOAD_PATH "sd:/payload.bin"
 #define ROPKIT_MOUNTSD
