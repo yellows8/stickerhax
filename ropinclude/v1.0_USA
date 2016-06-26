@@ -29,6 +29,8 @@
 #define POP_R0PC 0x00151fdc
 #define ROP_CMPR0R1_ALT0 0x0014096c
 #define ROP_INITOBJARRAY 0x002b649d
+#define svcConnectToPort 0x00116408
+#define svcGetProcessId 0x0011ec6c
 #define SRV_GETSERVICEHANDLE 0x002b763c
 #define CFGIPC_SecureInfoGetRegion 0x001179a0
 #define ROP_COND_THROWFATALERR 0x00104a88

