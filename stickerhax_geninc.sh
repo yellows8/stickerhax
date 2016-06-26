@@ -1,8 +1,10 @@
 # Usage: ./stickerhax_geninc.sh <path to yellows8github/3ds_ropkit repo> <codebin path>
 
-set -e
-
 $1/generate_ropinclude.sh $2 $1
+if [[ $? -ne 0 ]]; then
+	echo "//ERROR: 3ds_ropkit generate_ropinclude.sh returned an error."
+	exit 1
+fi
 
 echo ""
 
