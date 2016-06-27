@@ -1,0 +1,46 @@
+#define ROP_POPPC 0x0010d50c
+#define POP_R1PC 0x002b8b84
+#define POP_R3PC 0x0010fc44
+#define POP_R2R6PC 0x002a60b4
+#define POP_R4LR_BXR1 0x0012225c
+#define POP_R4R8LR_BXR2 0x0012a184
+#define POP_R4R5R6PC 0x0010e62c
+#define POP_R4FPPC 0x0010f8bc
+#define POP_R4R8PC 0x0010d2c4
+
+#define ROP_STR_R1TOR0 0x0010d4d4
+#define ROP_STR_R0TOR1 0x0010d3f0
+#define ROP_LDR_R0FROMR0 0x001a4d88
+#define ROP_ADDR0_TO_R1 0x00137604
+
+#define MEMCPY 0x002b8584
+#define MEMSET32_OTHER 0x002b8428
+
+#define svcControlMemory 0x002b7570
+#define svcCreateThread 0x00116438
+#define svcSleepThread 0x0012772c
+
+#define GSPGPU_FlushDataCache 0x00133eb8
+#define GSPGPU_SERVHANDLEADR 0x0044d49c
+
+#define IFile_Read 0x002a48a4
+#define IFile_Write 0x00267da0
+
+#define POP_R0PC 0x00151ff4
+#define ROP_CMPR0R1_ALT0 0x00140984
+#define ROP_INITOBJARRAY 0x002b6465
+#define svcConnectToPort 0x00116420
+#define svcGetProcessId 0x0011ec84
+#define SRV_GETSERVICEHANDLE 0x002b7604
+#define CFGIPC_SecureInfoGetRegion 0x001179b8
+#define ROP_COND_THROWFATALERR 0x00104a88
+#define GXLOW_CMD4 0x00133fbc
+#define GSP_SHAREDMEM_SETUPFRAMEBUF 0x001e2134
+#define FS_MountSdmc 0x002a0e98
+#define IFile_Open 0x002b578c
+#define IFile_Close 0x2b54ec
+
+#define STACKPIVOT_ADR 0x002b82fc
+#define ROP_VTABLEFUNCPTR_x10_CALL_R5OBJ 0x00107464
+
+#define ROPBUF 0x082bcd54
