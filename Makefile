@@ -19,21 +19,28 @@ BUILDPREFIX	:=
 ROPINC_PATH	:=	ropinclude
 
 all:
-	@mkdir -p finaloutput
+	@mkdir -p finaloutput_romfs/stickerhax
 	@mkdir -p build
-
-	@for path in $(ROPINC_PATH)/*; do echo Building $$(basename "$$path")... && make build_savedata --no-print-directory BUILDPREFIX=$$(basename "$$path"); done
+	@echo -n "stickerhax Sticker-Star 0x4" > finaloutput_romfs/exploitlist_config
+	@for path in $(ROPINC_PATH)/*; do echo Building for title $$(basename "$$path")... && make build_savedata --no-print-directory TID=$$(basename "$$path"); done
 
 clean:
-	@rm -R -f finaloutput
+	@rm -R -f finaloutput_romfs
 	@rm -R -f build
 
-build_savedata:	build/$(BUILDPREFIX).bin
-	@cp $< finaloutput/$(BUILDPREFIX).bin
+build_savedata:	
+	@mkdir -p finaloutput_romfs/stickerhax/$(TID)/v1.0/common/save
+	@echo "[remaster_versions]\n0000=romfs:/stickerhax/$(TID)/v1.0@v1.0" > finaloutput_romfs/stickerhax/$(TID)/config.ini
+	@echo -n " $(TID)" >> finaloutput_romfs/exploitlist_config
+	@for path in $(ROPINC_PATH)/$(TID)/*; do echo Building $$(basename "$$path")... && make build_title_savedata --no-print-directory BUILDPREFIX=$$(basename "$$path"); done
+
+build_title_savedata:	build/$(BUILDPREFIX).bin
+	@echo "save/$(BUILDPREFIX).bin=/pm4_@!d1.bin" > finaloutput_romfs/stickerhax/$(TID)/v1.0/common/config.ini
+	@cp $< finaloutput_romfs/stickerhax/$(TID)/v1.0/common/save/$(BUILDPREFIX).bin
 
 build/$(BUILDPREFIX).bin:	build/$(BUILDPREFIX).elf
 	@$(OBJCOPY) -O binary $< $@
 
 build/$(BUILDPREFIX).elf:	stickerhax.s
-	@$(CC) -x assembler-with-cpp -nostartfiles -nostdlib -I$(ROPKIT_PATH) -include $(ROPINC_PATH)/$(BUILDPREFIX) $< -o $@
+	@$(CC) -x assembler-with-cpp -nostartfiles -nostdlib -I$(ROPKIT_PATH) -include $(ROPINC_PATH)/$(TID)/$(BUILDPREFIX) $< -o $@
 
