@@ -23,6 +23,7 @@ all:
 	@mkdir -p build
 	@echo -n "stickerhax Sticker-Star 0x4" > finaloutput_romfs/exploitlist_config
 	@for path in $(ROPINC_PATH)/*; do echo Building for title $$(basename "$$path")... && make build_savedata --no-print-directory TID=$$(basename "$$path"); done
+	@echo "" >> finaloutput_romfs/exploitlist_config
 
 clean:
 	@rm -R -f finaloutput_romfs
