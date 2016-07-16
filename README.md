@@ -2,6 +2,10 @@ This is a savedata exploit for Nintendo 3DS "Paper Mario: Sticker Star". This tr
 
 The original PoC for this was done on June 16, 2016.
 
+Currently this loads the payload from SD(exheader patch required), hence this is not usable from userland-only currently.
+
+Getting the \*hax payload stored in savedata is rather difficult: the max files allowed by the FS(with the default formatting used by this game) is exactly 3, which matches the total number of save-files. If any of the save-files are missing, the game will automatically re-create them at entering the save-select screen. And if any of the save-files have a larger filesize than expected, the game will reset all of the save-files.
+
 # Building
 "make clean ROPKIT_PATH={path to yellows8github/3ds_ropkit} && make ROPKIT_PATH={path to yellows8github/3ds_ropkit}"
 
