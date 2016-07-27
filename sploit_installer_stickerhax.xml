@@ -1,0 +1,16 @@
+<shortcut>
+	<executable>/3ds/install/install.3dsx</executable>
+	<icon>/3ds/sploit_installer_stickerhax.smdh</icon>
+</shortcut>
+<targets selectable="false">
+	<title mediatype="2">00040000000a5d00</title>
+	<title mediatype="2">00040000000a5e00</title>
+	<title mediatype="2">00040000000a5f00</title>
+	<title mediatype="2">00040000000c6800</title>
+	<title mediatype="2">00040000000c8100</title>
+	<title mediatype="1">00040000000a5d00</title>
+	<title mediatype="1">00040000000a5e00</title>
+	<title mediatype="1">00040000000a5f00</title>
+	<title mediatype="1">00040000000c6800</title>
+	<title mediatype="1">00040000000c8100</title>
+</targets>

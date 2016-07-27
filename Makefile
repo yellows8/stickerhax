@@ -11,19 +11,27 @@ $(error "ROPKIT_PATH is not set.")
 endif
 
 TOPDIR ?= $(CURDIR)
-include $(DEVKITARM)/base_rules
+include $(DEVKITARM)/3ds_rules
 
 .PHONY: clean all build_savedata
 
 BUILDPREFIX	:=	
 ROPINC_PATH	:=	ropinclude
 
-all:
+ICON	:=	sploit_installer_stickerhax.png
+
+APP_TITLE	:=	sploit_installer-stickerhax
+APP_DESCRIPTION	:=	Install stickerhax. Requires Paper Mario: Sticker Star. https://github.com/yellows8/stickerhax
+APP_AUTHOR	:=	smea and yellows8
+
+all	:	sploit_installer_stickerhax.smdh
 	@mkdir -p finaloutput_romfs/stickerhax
 	@mkdir -p build
 	@echo -n "stickerhax Sticker-Star 0x4" > finaloutput_romfs/exploitlist_config
 	@for path in $(ROPINC_PATH)/*; do echo Building for title $$(basename "$$path")... && make build_savedata --no-print-directory TID=$$(basename "$$path"); done
 	@echo "" >> finaloutput_romfs/exploitlist_config
+
+sploit_installer_stickerhax.smdh:
 
 clean:
 	@rm -R -f finaloutput_romfs
