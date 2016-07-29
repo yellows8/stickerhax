@@ -2,11 +2,9 @@ This is a savedata exploit for Nintendo 3DS "Paper Mario: Sticker Star". This tr
 
 The original PoC for this was done on June 16, 2016.
 
-Currently this loads the payload from SD(exheader patch required), hence this is not usable from userland-only currently.
+Due to how the savedata is normally formatted, and due to lack of space, during installation savedata has to be formatted so that the payload can actually be installed basically. Hence, when you install this, **you will lose all of your save-files**. When you first launch the game after installation, the game will create blank save-files for the other save-files which don't exist. If you don't want to lose your savedata, back it up with whatever save manager tool you want **before installation**. **After installation**, you can restore your save-files for the non-hax-savefiles.
 
-Getting the \*hax payload stored in savedata is rather difficult: the max files allowed by the FS(with the default formatting used by this game) is exactly 3, which matches the total number of save-files. If any of the save-files are missing, the game will automatically re-create them at entering the save-select screen. And if any of the save-files have a larger filesize than expected, the game will reset all of the save-files.
-
-USA and EUR work fine. JPN and KOR all crash the same way @ ROP_VTABLEFUNCPTR_x10_CALL_R5OBJ+4 since the ROPBUF for those regions are wrong. The CHNTWN build is broken, target stackframe size seems different(doesn't even crash).
+USA works fine. Building for EUR, JPN, and CHNTWN are disabled since the ropincludes need updated due to missing FS_MountSavedata. JPN and KOR all crash the same way @ ROP_VTABLEFUNCPTR_x10_CALL_R5OBJ+4 since the ROPBUF for those regions are wrong. The CHNTWN build is broken, target stackframe size seems different(doesn't even crash).
 
 # Building
 "make clean ROPKIT_PATH={path to yellows8github/3ds_ropkit} && make ROPKIT_PATH={path to yellows8github/3ds_ropkit}"
