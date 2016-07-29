@@ -17,7 +17,7 @@ _start:
 //STACKPIVOT_ADR: "ldm r4, {ip, sp, lr, pc}"
 //ROP_VTABLEFUNCPTR_x10_CALL_R5OBJ: Call vtable funcptr +0x10 from the r5 object.
 
-//ROPBUF: Address of this savefile buffer in the heap. It's unknown whether this varies per-region, there doesn't seem to be any localization strings in memory prior to this heap addr.
+//ROPBUF: Address of this savefile buffer in the heap. Varies per region.
 
 .macro ROPMACRO_STACKPIVOT_PREPAREREGS_BEFOREJUMP
 .word POP_R2R6PC
