@@ -19,7 +19,7 @@ BUILDPREFIX	:=
 ROPINC_PATH	:=	ropinclude
 
 APP_TITLE	:=	sploit_installer-stickerhax
-APP_DESCRIPTION	:=	Install stickerhax. Requires Paper Mario: Sticker Star. https://github.com/yellows8/stickerhax
+APP_DESCRIPTION	:=	Install stickerhax. Requires Paper Mario: Sticker Star. READ FIRST: https://github.com/yellows8/stickerhax
 APP_AUTHOR	:=	smea and yellows8
 
 export APP_ICON	:=	icon.png
