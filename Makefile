@@ -18,11 +18,11 @@ include $(DEVKITARM)/3ds_rules
 BUILDPREFIX	:=	
 ROPINC_PATH	:=	ropinclude
 
-ICON	:=	sploit_installer_stickerhax.png
-
 APP_TITLE	:=	sploit_installer-stickerhax
 APP_DESCRIPTION	:=	Install stickerhax. Requires Paper Mario: Sticker Star. https://github.com/yellows8/stickerhax
 APP_AUTHOR	:=	smea and yellows8
+
+export APP_ICON	:=	icon.png
 
 all	:	sploit_installer_stickerhax.smdh
 	@mkdir -p finaloutput_romfs/stickerhax
@@ -40,6 +40,7 @@ clean:
 build_savedata:	
 	@mkdir -p finaloutput_romfs/stickerhax/$(TID)/v1.0/common/save
 	@echo "[remaster_versions]\n0000=romfs:/stickerhax/$(TID)/v1.0@v1.0" > finaloutput_romfs/stickerhax/$(TID)/config.ini
+	@echo "[config]\nsaveformat=0,4,3,5,0" >> finaloutput_romfs/stickerhax/$(TID)/config.ini
 	@echo -n " $(TID)" >> finaloutput_romfs/exploitlist_config
 	@for path in $(ROPINC_PATH)/$(TID)/*; do echo Building $$(basename "$$path")... && make build_title_savedata --no-print-directory BUILDPREFIX=$$(basename "$$path"); done
 

@@ -17,7 +17,6 @@
 #define MEMSET32_OTHER 0x002b8460
 
 #define svcControlMemory 0x002b75a8
-#define svcCreateThread 0x00116420
 #define svcSleepThread 0x00127714
 
 #define GSPGPU_FlushDataCache 0x00133ea0
@@ -29,6 +28,7 @@
 #define POP_R0PC 0x00151fdc
 #define ROP_CMPR0R1_ALT0 0x0014096c
 #define ROP_INITOBJARRAY 0x002b649d
+#define svcCreateThread 0x00116420
 #define svcConnectToPort 0x00116408
 #define svcGetProcessId 0x0011ec6c
 #define SRV_GETSERVICEHANDLE 0x002b763c
@@ -37,8 +37,10 @@
 #define GXLOW_CMD4 0x00133fa4
 #define GSP_SHAREDMEM_SETUPFRAMEBUF 0x001e211c
 #define FS_MountSdmc 0x002a0ed0
+#define FS_MountSavedata 0x001de82c
 #define IFile_Open 0x002b57c4
 #define IFile_Close 0x2b5524
+#define IFile_Seek 0x002a482c
 
 #define STACKPIVOT_ADR 0x002b8334
 #define ROP_VTABLEFUNCPTR_x10_CALL_R5OBJ 0x00107464
