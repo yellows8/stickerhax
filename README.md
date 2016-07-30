@@ -6,7 +6,7 @@ Due to how the savedata is normally formatted by the game, and due to lack of sp
 
 USA and EUR work fine. Building for JPN and CHNTWN are disabled since the ropincludes need updated due to missing FS_MountSavedata. JPN and KOR all crash the same way @ ROP_VTABLEFUNCPTR_x10_CALL_R5OBJ+4 since the ROPBUF for those regions are wrong. The CHNTWN build is broken, target stackframe size seems different(doesn't crash but semi-"hangs").
 
-To install, use 'sploit_installer-stickerhax' included with the homebrew [starter-kit](https://smealum.github.io/3ds/). This requires [another](https://www.3dbrew.org/wiki/Homebrew_Exploits) way to run homebrew. This contains support for USA and EUR. Gamecard save-images for powersaves are not available as of July 29, 2016, due to the newer save-crypto this game uses.
+To install, use 'sploit_installer-stickerhax' now included with the homebrew [starter-kit](https://smealum.github.io/3ds/). This requires [another](https://www.3dbrew.org/wiki/Homebrew_Exploits) way to run homebrew. This contains support for USA and EUR. Gamecard save-images for powersaves are not available as of July 29, 2016, due to the newer save-crypto this game uses.
 
 # Building
 "make clean ROPKIT_PATH={path to yellows8github/3ds_ropkit} && make ROPKIT_PATH={path to yellows8github/3ds_ropkit}"
@@ -14,7 +14,7 @@ To install, use 'sploit_installer-stickerhax' included with the homebrew [starte
 The contents of the finaloutput_romfs directory can then be copied into the romfs directory used for building [sploit_installer](https://github.com/smealum/sploit_installer), with exploitlist_config being appended to the end of the sploit_installer/romfs/exploitlist_config file.
 
 # Exploitation/development
-1. Dumped savedata.
+1. *Finally* dumped savedata for the first time with this game.
 2. Tried modifying savedata to check whether any CRC/checksum is used, which there isn't.
 3. Overwrote the entire savefile starting at offset 0xc, with random data. Then selected the savefile in-game by pressing A.
 4. From the exception-dump *followed* by code-RE, the game crashed while running strcpy(stackptr, ptr_in_heap_savebuf), due to trying to write to read-only sharedmem(it wrote beyond the stacktop).
