@@ -1,4 +1,4 @@
-This is a savedata exploit for Nintendo 3DS "Paper Mario: Sticker Star". This triggers when you select the savefile via A which has the exploit installed. All currently available versions of this game are supported as of July 29, 2016(exploit release): gamecard/eShop-install are supported, Nintendo Selects version is also supported.
+This is a savedata exploit for Nintendo 3DS "Paper Mario: Sticker Star". This triggers when you select the savefile via A which has the exploit installed, around when the save-select sound finishes playing. All currently available versions of this game are supported as of July 29, 2016(exploit release): gamecard/eShop-install are supported, Nintendo Selects version is also supported.
 
 The original PoC for this was done on June 16, 2016.
 
