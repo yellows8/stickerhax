@@ -27,5 +27,5 @@ else
 fi
 
 # Hard-coded for now.
-# USA = 0x082bcd54. EUR = 0x082be68c.
+# USA = 0x082bcd54. EUR = 0x082be68c. JPN = 0x082bb450. KOR = 0x082bb480.
 echo -e "\n#define ROPBUF 0x082bcd54"
