@@ -4,7 +4,7 @@ The original PoC for this was done on June 16, 2016.
 
 Due to how the savedata is normally formatted by the game, and due to lack of space, during installation savedata has to be formatted so that the payload can actually be installed basically. Hence, when you install this, **you will lose all of your save-files**. When you first launch the game after installation, the game will create blank save-files for the other save-files which don't exist. If you don't want to lose your savedata, back it up with whatever save manager homebrew you want **before installation**. **After installation**, you can restore your save-files for the non-hax-savefiles.
 
-USA and EUR work fine. Building for JPN and CHNTWN are disabled since the ropincludes need updated due to missing FS_MountSavedata. JPN and KOR are broken since ROPBUF is wrong for those regions(this should be fixed now but it's not tested yet). The CHNTWN build is broken, target stackframe size seems different(doesn't crash but semi-"hangs").
+USA and EUR work fine. JPN and KOR are broken since ROPBUF is wrong for those regions(this should be fixed now but it's not tested yet). The CHNTWN build is broken, target stackframe size seems different(doesn't crash but semi-"hangs").
 
 To install, use 'sploit_installer-stickerhax' now included with the homebrew [starter-kit](https://smealum.github.io/3ds/). This requires [another](https://www.3dbrew.org/wiki/Homebrew_Exploits) way to run homebrew. This contains support for USA and EUR. Gamecard save-images for powersaves are not available as of July 29, 2016, due to the newer save-crypto this game uses.
 

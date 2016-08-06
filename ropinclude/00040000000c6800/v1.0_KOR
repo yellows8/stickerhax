@@ -40,6 +40,7 @@
 #define FS_MountSavedata 0x001de904
 #define IFile_Open 0x002b592c
 #define IFile_Close 0x2b568c
+#define IFile_Seek 0x002a4994
 
 #define STACKPIVOT_ADR 0x002b855c
 #define ROP_VTABLEFUNCPTR_x10_CALL_R5OBJ 0x001073c0
