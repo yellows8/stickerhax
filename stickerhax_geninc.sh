@@ -17,6 +17,7 @@ else
 	exit 1
 fi
 
+# For CHNTWN this should be defined as STACKPIVOT_ADR instead to workaround 0-byte in the addr.
 printstr=`ropgadget_patternfinder $2 --baseaddr=0x100000 --patterntype=sha256 --patterndata=dc74629ff3e859244262b1539190fe28e7146951cf1cfcd24d1cabca01e141d4 --patternsha256size=0x10 "--plainout=#define ROP_VTABLEFUNCPTR_x10_CALL_R5OBJ "`
 
 if [[ $? -eq 0 ]]; then
